@@ -1,0 +1,25 @@
+<app-template></app-template>
+<form class="example-form" novalidate (ngSubmit)="buscarFilme()" [formGroup]="form"  >
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="Digite o nome do Filme" formControlName="busca">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input type="date" matInput placeholder="Data" formControlName="data">
+    </mat-form-field></td>
+    <td >
+      <button class="bnt" mat-raised-button type="submit" color="primary">Buscar</button>
+    </td>
+  </tr></table>
+ </form>
+
+<table>
+ <tr *ngFor="let data of rows; let id = index">
+  <td>
+    <span>{{data.Title}}</span>
+  </td>
+  <td>
+    <span>{{data.Type}}</span>
+  </td>
+</tr>
+</table>
