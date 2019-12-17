@@ -38,11 +38,9 @@ export class BuscarFilmesComponent implements OnInit {
     if(this.form.dirty && this.form){
       let p = Object.assign({}, this.form.value);
       this.nome = p.busca;
-      this.filmeService.getBuscarFilme( p.busca)
-        .subscribe((data: Response) => 
-        {
-          Promise.resolve(data)
-        },
+      this.filmeService.getBuscarFilme(p.busca).then(data => {
+          this.filme = data;
+      },
         error => 
         {
           this.errors = error.errors;
