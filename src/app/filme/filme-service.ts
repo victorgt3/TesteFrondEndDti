@@ -7,9 +7,12 @@ import { Observable } from 'rxjs';
 export class FilmeService extends ServiceBase{
     constructor(private http: HttpClient){ super();   }
 
-    getBuscarFilme(nome: string): Observable<any>{
+    getBuscarFilme(nome: string): Promise<any>{
         
-        return this.http.get<any>(`http://www.omdbapi.com/?s=${nome}&apikey=6912407a`);
+        return new Promise<any>(resolve => {
+          this.http.get<any>(`http://www.omdbapi.com/?s=${nome}&apikey=6912407a`).subscribe(data =>{
+            resolve(data);            
+          });
     }
 
     getDetalheFilme(imdbID: string): Observable<any>{
